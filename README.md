@@ -10,9 +10,9 @@ WINDOWS下面拷贝选择请选择 F：目录
 
 到bin目录下面需要修改的地方：(每次更新svn后，必须运行compile_copy.bat一次)
 
-1: run.bat中修改$BASE_HOME的路径地址
+1. run.bat中修改$BASE_HOME的路径地址
 
-2: baseconfig.xml中
+2. baseconfig.xml中 <br />
 |--a：package中的路径，每个可以按照自己的需求定制，<br />
 |   例如：您的domain的package位置是com.hqb360.trade.domain.entity，可以把base路径抽象为com.hqb360.trade，<br />
 |   把domain的设置为domain.entity，dao服用base的路径。<br />
@@ -21,14 +21,14 @@ WINDOWS下面拷贝选择请选择 F：目录
 
 *********************************maven依赖置*********************************
 
-1：在maven的配置文件中增加apache的mirror：
-    <mirror>
+1. 在maven的配置文件中增加apache的mirror：
+   <code> <mirror>
         <id>apache</id>
         <mirrorOf>central</mirrorOf>
         <url>http://repo1.maven.org/maven2</url>
-    </mirror>
-2: 在应用的pom.xml文件中添加依赖
-    <dependency>
+    </mirror> </code>
+2. 在应用的pom.xml文件中添加依赖
+   <code> <dependency>
         <groupId>org.yaml</groupId>
         <artifactId>snakeyaml</artifactId>
         <version>1.9</version>
@@ -38,7 +38,7 @@ WINDOWS下面拷贝选择请选择 F：目录
         <artifactId>testng</artifactId>
         <version>6.1.1</version>
         <scope>test</scope>
-    </dependency>
+    </dependency> </code>
 
 *********************************代码相关说明*********************************
 
