@@ -1,5 +1,8 @@
 if you have any problem ,you can mail to:longtask@gmail.com
 
+依赖的项目：<a href="https://github.com/hoorace/common-dao" target="_blank"> common-dao </a>
+
+
 务必修改compile_copy.bat和run.bat的$BASE_HOME的路径，执行compile_copy.bat把文件拷贝到bin下面。
 WINDOWS下面拷贝选择请选择 F：目录
 
