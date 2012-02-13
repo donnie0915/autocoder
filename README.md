@@ -23,11 +23,11 @@ WINDOWS下面拷贝选择请选择 F：目录
 
 1. 在maven的配置文件中增加apache的mirror：
    <code> 
-      <mirror>
-        <id>apache</id>
-        <mirrorOf>central</mirrorOf>
-        <url>http://repo1.maven.org/maven2</url>
-      </mirror> 
+      lt;mirrorgt;
+        lt;idgt;apachelt;/idgt;
+        lt;mirrorOfgt;centrallt;/mirrorOfgt;
+        lt;urlgt;http://repo1.maven.org/maven2lt;/urlgt;
+      lt;/mirrorgt; 
    </code>
 2. 在应用的pom.xml文件中添加依赖
    <code> 
