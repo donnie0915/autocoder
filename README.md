@@ -42,30 +42,30 @@ WINDOWS下面拷贝选择请选择 F：目录
 
 *********************************代码相关说明*********************************
 
-+ 分页，排序需要设置ListAdapter中的属性：
-    ListAdapter<PvsToday> adapter = new DefaultListAdapter<PvsToday>();
-    adapter.adapter.setPageNo(1).setPageSize(20);//分页
-    adapter.setOrderItem("xx").setOrderType("ASC");//排序字段
-+ 为了解决DO和VO的导致JavaBean内容重复的问题，设计上考虑使用动态字段来传值，提高系统可拓展性。
-    set动态字段：
-        adapter.setFiled("startTime", startTime).setFiled("endTime", endTime);
-    在xml配置中调用
-        <isNotEmpty prepend="and" property = "dynamicFileds_startTime">
-            created_time &gt; #dynamicFileds_startTime#
-        </isNotEmpty>
-        <isNotEmpty prepend="and" property = "dynamicFileds_endTime">
-            created_time &lt; #dynamicFileds_endTime#
-        </isNotEmpty>
-+ update都是需要直接修改xml来完成，生成的内容仅供参考。
+1. 分页，排序需要设置ListAdapter中的属性：<br />
+    ListAdapter<PvsToday> adapter = new DefaultListAdapter<PvsToday>(); <br />
+    adapter.adapter.setPageNo(1).setPageSize(20);//分页 <br />
+    adapter.setOrderItem("xx").setOrderType("ASC");//排序字段 <br />
+2. 为了解决DO和VO的导致JavaBean内容重复的问题，设计上考虑使用动态字段来传值，提高系统可拓展性。 <br />
+    set动态字段： <br />
+        adapter.setFiled("startTime", startTime).setFiled("endTime", endTime); <br />
+    在xml配置中调用 <br />
+        <isNotEmpty prepend="and" property = "dynamicFileds_startTime"> <br />
+            created_time &gt; #dynamicFileds_startTime# <br />
+        </isNotEmpty> <br />
+        <isNotEmpty prepend="and" property = "dynamicFileds_endTime"> <br />
+            created_time &lt; #dynamicFileds_endTime# <br />
+        </isNotEmpty> <br />
+3. update都是需要直接修改xml来完成，生成的内容仅供参考。 <br />
 
 
-版本：
+版本：<br />
 ********************** 1.0.1功能列表[2011-10-10]：**********************
 
-* 把domain中set方法返回对象修改为void,否则会导致标准JavaBean不能set参数；domain中属性方法修改为私有。[bugfix]
-* compile_copy.bat增加了call命令，修复maven编译后自动退出的bug。[bugfix]
-* 添加了jdbc.properties自动生成的功能 [new]
-* 去掉了bin/{lib,template}目录下面的文件，让编译拷贝来完成。[new]
-* 优化了测试代码。[new]
-* 在数据库中如果是“id”结尾的int类型，在JavaBean中自动生成设置为long类型的。[new]
-* 修复了“.”导致的无法读取dynamicFileds的数据的问题，暂时都修改为“_”[bugfix]
+1. 把domain中set方法返回对象修改为void,否则会导致标准JavaBean不能set参数；domain中属性方法修改为私有。[bugfix] <br />
+2. compile_copy.bat增加了call命令，修复maven编译后自动退出的bug。[bugfix] <br />
+3. 添加了jdbc.properties自动生成的功能 [new] <br />
+4. 去掉了bin/{lib,template}目录下面的文件，让编译拷贝来完成。[new] <br />
+5. 优化了测试代码。[new] <br />
+6. 在数据库中如果是“id”结尾的int类型，在JavaBean中自动生成设置为long类型的。[new] <br />
+7. 修复了“.”导致的无法读取dynamicFileds的数据的问题，暂时都修改为“_”[bugfix] <br />
