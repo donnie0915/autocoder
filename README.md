@@ -42,21 +42,21 @@ WINDOWS下面拷贝选择请选择 F：目录
 
 *********************************代码相关说明*********************************
 
-* 分页，排序需要设置ListAdapter中的属性：
++ 分页，排序需要设置ListAdapter中的属性：
     ListAdapter<PvsToday> adapter = new DefaultListAdapter<PvsToday>();
     adapter.adapter.setPageNo(1).setPageSize(20);//分页
     adapter.setOrderItem("xx").setOrderType("ASC");//排序字段
-* 为了解决DO和VO的导致JavaBean内容重复的问题，设计上考虑使用动态字段来传值，提高系统可拓展性。
++ 为了解决DO和VO的导致JavaBean内容重复的问题，设计上考虑使用动态字段来传值，提高系统可拓展性。
     set动态字段：
-    adapter.setFiled("startTime", startTime).setFiled("endTime", endTime);
+        adapter.setFiled("startTime", startTime).setFiled("endTime", endTime);
     在xml配置中调用
-    <isNotEmpty prepend="and" property = "dynamicFileds_startTime">
-        created_time &gt; #dynamicFileds_startTime#
-    </isNotEmpty>
-    <isNotEmpty prepend="and" property = "dynamicFileds_endTime">
-        created_time &lt; #dynamicFileds_endTime#
-    </isNotEmpty>
-* update都是需要直接修改xml来完成，生成的内容仅供参考。
+        <isNotEmpty prepend="and" property = "dynamicFileds_startTime">
+            created_time &gt; #dynamicFileds_startTime#
+        </isNotEmpty>
+        <isNotEmpty prepend="and" property = "dynamicFileds_endTime">
+            created_time &lt; #dynamicFileds_endTime#
+        </isNotEmpty>
++ update都是需要直接修改xml来完成，生成的内容仅供参考。
 
 
 版本：
