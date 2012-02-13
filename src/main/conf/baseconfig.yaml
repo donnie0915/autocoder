@@ -1,0 +1,35 @@
+name: longhao
+version: 1.0.0
+
+package:
+- base: com.hqb360.trade
+  domain: domain.entity
+  dao: biz.dao
+  daoImpl: biz.dao.impl
+  service: service
+  serviceImpl: service.impl
+
+sql:
+- type: mysql
+  driver: com.mysql.jdbc.Driver
+  url: jdbc:mysql://192.168.10.254/hqb?useUnicode=true&amp;characterEncoding=utf-8
+  username: 360hqb
+  password: 360hqb
+  database: hqb
+  tables: seckill_heros
+
+#-- config set 
+spring_config_name: spring_dao_config.xml
+ibatis_config_name: ibatis_config.xml
+
+#-- dao set
+base_dao: com.hqb360.common.dao.BaseDao
+base_dao_impl: com.hqb360.common.dao.BaseDaoImpl
+dao_statement_name: com.hqb360.common.dao.DaoStatementName
+default_dao_statement_name: com.hqb360.common.dao.DefaultDaoStatementName
+abstract_spring_dao_test: com.hqb360.test.base.AbstractSpringDaoTest
+
+default_list_adapter: com.hqb360.common.dao.adapter.DefaultListAdapter
+list_adapter: com.hqb360.common.dao.adapter.ListAdapter
+default_find_adapter: com.hqb360.common.dao.adapter.DefaultFindAdapter
+find_adapter: com.hqb360.common.dao.adapter.FindAdapter

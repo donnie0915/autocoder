@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<!-- Always ensure to use the correct XML header as above! -->
+<sqlMap namespace="OriginDomain">
+<typeAlias alias="originDomain" type="com.hqb360.analysis.report.domain.entity.OriginDomain"/>
+<resultMap id="originDomain_result" class="originDomain">
+    <result property="id" column="id"/>
+    <result property="pv" column="pv"/>
+    <result property="uv" column="uv"/>
+    <result property="ip" column="ip"/>
+    <result property="newPv" column="new_pv"/>
+    <result property="newUv" column="new_uv"/>
+    <result property="urlDomain" column="url_domain"/>
+    <result property="urlType" column="url_type"/>
+    <result property="isDate" column="is_date"/>
+    <result property="createTime" column="create_time"/>
+    <result property="countPv" column="count_pv"/>
+    <result property="addTime" column="add_time"/>
+    <result property="registers" column="registers"/>
+    <result property="orders" column="orders"/>
+    <result property="ordersUv" column="orders_uv"/>
+    <result property="ordersGmv" column="orders_gmv"/>
+    <result property="ordersPaid" column="orders_paid"/>
+    <result property="ordersPaidUv" column="orders_paid_uv"/>
+    <result property="ordersPaidSum" column="orders_paid_sum"/>
+</resultMap>
+
+<sql id="OriginDomain_Query_List_Sharing">
+	<dynamic prepend="WHERE">
+			<isNotEmpty prepend="and" property = "id">
+				id = #id#
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property = "pv">
+				pv = #pv#
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property = "uv">
+				uv = #uv#
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property = "ip">
+				ip = #ip#
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property = "newPv">
+				new_pv = #newPv#
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property = "newUv">
+				new_uv = #newUv#
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property = "urlDomain">
+				url_domain = #urlDomain#
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property = "urlType">
+				url_type = #urlType#
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property = "isDate">
+				is_date = #isDate#
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property = "createTime">
+				create_time = #createTime#
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property = "countPv">
+				count_pv = #countPv#
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property = "addTime">
+				add_time = #addTime#
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property = "registers">
+				registers = #registers#
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property = "orders">
+				orders = #orders#
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property = "ordersUv">
+				orders_uv = #ordersUv#
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property = "ordersGmv">
+				orders_gmv = #ordersGmv#
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property = "ordersPaid">
+				orders_paid = #ordersPaid#
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property = "ordersPaidUv">
+				orders_paid_uv = #ordersPaidUv#
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property = "ordersPaidSum">
+				orders_paid_sum = #ordersPaidSum#
+			</isNotEmpty>
+	</dynamic>
+</sql>
+
+<sql id="OriginDomain_List_Paramter">
+	<dynamic prepend="ORDER BY">
+		<isNotEmpty property = "orderItem">
+			 $orderItem$ $orderType$ <!-- # and $ has difference, this place need $ -->
+		</isNotEmpty>
+	</dynamic>
+</sql>
+
+<sql id="OriginDomain_column">
+			id,
+			pv,
+			uv,
+			ip,
+			new_pv,
+			new_uv,
+			url_domain,
+			url_type,
+			is_date,
+			create_time,
+			count_pv,
+			add_time,
+			registers,
+			orders,
+			orders_uv,
+			orders_gmv,
+			orders_paid,
+			orders_paid_uv,
+			orders_paid_sum
+</sql>
+
+<sql id="OriginDomain_By_Id">
+	WHERE  id = #id#
+</sql> 
+
+<insert id="addOriginDomain" parameterClass="originDomain" >
+    INSERT INTO origin_domain (
+	<include refid="OriginDomain_column" />
+        )
+    VALUES (
+				#id#,
+				#pv#,
+				#uv#,
+				#ip#,
+				#newPv#,
+				#newUv#,
+				#urlDomain#,
+				#urlType#,
+				#isDate#,
+				#createTime#,
+				#countPv#,
+				#addTime#,
+				#registers#,
+				#orders#,
+				#ordersUv#,
+				#ordersGmv#,
+				#ordersPaid#,
+				#ordersPaidUv#,
+				#ordersPaidSum#
+    )
+    <!--<selectKey resultClass="long" keyProperty="id">
+			select last_insert_id() as ID from origin_domain limit 1
+    </selectKey>-->
+</insert>  
+
+<update id="updateOriginDomain" parameterClass="originDomain">
+    UPDATE origin_domain 
+    <dynamic prepend="set">
+			<isNotEmpty prepend="," property = "id">
+				id = #id#
+			</isNotEmpty>
+			<isNotEmpty prepend="," property = "pv">
+				pv = #pv#
+			</isNotEmpty>
+			<isNotEmpty prepend="," property = "uv">
+				uv = #uv#
+			</isNotEmpty>
+			<isNotEmpty prepend="," property = "ip">
+				ip = #ip#
+			</isNotEmpty>
+			<isNotEmpty prepend="," property = "newPv">
+				new_pv = #newPv#
+			</isNotEmpty>
+			<isNotEmpty prepend="," property = "newUv">
+				new_uv = #newUv#
+			</isNotEmpty>
+			<isNotEmpty prepend="," property = "urlDomain">
+				url_domain = #urlDomain#
+			</isNotEmpty>
+			<isNotEmpty prepend="," property = "urlType">
+				url_type = #urlType#
+			</isNotEmpty>
+			<isNotEmpty prepend="," property = "isDate">
+				is_date = #isDate#
+			</isNotEmpty>
+			<isNotEmpty prepend="," property = "createTime">
+				create_time = #createTime#
+			</isNotEmpty>
+			<isNotEmpty prepend="," property = "countPv">
+				count_pv = #countPv#
+			</isNotEmpty>
+			<isNotEmpty prepend="," property = "addTime">
+				add_time = #addTime#
+			</isNotEmpty>
+			<isNotEmpty prepend="," property = "registers">
+				registers = #registers#
+			</isNotEmpty>
+			<isNotEmpty prepend="," property = "orders">
+				orders = #orders#
+			</isNotEmpty>
+			<isNotEmpty prepend="," property = "ordersUv">
+				orders_uv = #ordersUv#
+			</isNotEmpty>
+			<isNotEmpty prepend="," property = "ordersGmv">
+				orders_gmv = #ordersGmv#
+			</isNotEmpty>
+			<isNotEmpty prepend="," property = "ordersPaid">
+				orders_paid = #ordersPaid#
+			</isNotEmpty>
+			<isNotEmpty prepend="," property = "ordersPaidUv">
+				orders_paid_uv = #ordersPaidUv#
+			</isNotEmpty>
+			<isNotEmpty prepend="," property = "ordersPaidSum">
+				orders_paid_sum = #ordersPaidSum#
+			</isNotEmpty>
+	</dynamic>
+    <include refid="OriginDomain_Query_List_Sharing" />
+</update> 
+
+<select id="findOriginDomain" resultMap="originDomain_result" parameterClass="java.util.HashMap">
+    SELECT
+     	<include refid="OriginDomain_column" />      
+    FROM origin_domain
+   <include refid="OriginDomain_Query_List_Sharing" />
+</select>
+
+<select id="findByIdOriginDomain" resultMap="originDomain_result" parameterClass="java.lang.Long">
+    SELECT
+     	<include refid="OriginDomain_column" />      
+    FROM origin_domain
+    <include refid="OriginDomain_By_Id" />
+</select>
+
+<select id="listOriginDomain" resultMap="originDomain_result" parameterClass="java.util.HashMap">
+    SELECT
+         <include refid="OriginDomain_column" />  
+    FROM origin_domain
+	<include refid="OriginDomain_Query_List_Sharing" />
+	<include refid="OriginDomain_List_Paramter" />
+	limit #begin#,#pageSize#
+</select>
+
+
+<select id="listOriginDomainCount" resultClass="java.lang.Integer" parameterClass="java.util.HashMap">
+    SELECT
+		COUNT(*)
+   	FROM origin_domain
+	<include refid="OriginDomain_Query_List_Sharing" />
+</select>
+
+<delete id="delOriginDomain" parameterClass="originDomain">
+    DELETE  FROM  origin_domain 
+    <include refid="OriginDomain_By_Id" />
+</delete>  
+
+</sqlMap>

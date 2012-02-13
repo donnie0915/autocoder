@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<!-- Always ensure to use the correct XML header as above! -->
+<sqlMap namespace="General">
+<typeAlias alias="general" type="com.hqb360.analysis.report.domain.entity.General"/>
+<resultMap id="general_result" class="general">
+    <result property="id" column="id"/>
+    <result property="pv" column="pv"/>
+    <result property="uv" column="uv"/>
+    <result property="ip" column="ip"/>
+    <result property="onlyVisitor" column="only_visitor"/>
+    <result property="liveTime" column="live_time"/>
+    <result property="isDate" column="is_date"/>
+    <result property="startTime" column="start_time"/>
+    <result property="endTiem" column="end_tiem"/>
+    <result property="addTime" column="add_time"/>
+    <result property="onlyClick" column="only_click"/>
+</resultMap>
+
+<sql id="General_Query_List_Sharing">
+	<dynamic prepend="WHERE">
+			<isNotEmpty prepend="and" property = "id">
+				id = #id#
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property = "pv">
+				pv = #pv#
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property = "uv">
+				uv = #uv#
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property = "ip">
+				ip = #ip#
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property = "onlyVisitor">
+				only_visitor = #onlyVisitor#
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property = "liveTime">
+				live_time = #liveTime#
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property = "isDate">
+				is_date = #isDate#
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property = "startTime">
+				start_time = #startTime#
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property = "endTiem">
+				end_tiem = #endTiem#
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property = "addTime">
+				add_time = #addTime#
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property = "onlyClick">
+				only_click = #onlyClick#
+			</isNotEmpty>
+	</dynamic>
+</sql>
+
+<sql id="General_List_Paramter">
+	<dynamic prepend="ORDER BY">
+		<isNotEmpty property = "orderItem">
+			 $orderItem$ $orderType$ <!-- # and $ has difference, this place need $ -->
+		</isNotEmpty>
+	</dynamic>
+</sql>
+
+<sql id="General_column">
+			id,
+			pv,
+			uv,
+			ip,
+			only_visitor,
+			live_time,
+			is_date,
+			start_time,
+			end_tiem,
+			add_time,
+			only_click
+</sql>
+
+<sql id="General_By_Id">
+	WHERE  id = #id#
+</sql> 
+
+<insert id="addGeneral" parameterClass="general" >
+    INSERT INTO general (
+	<include refid="General_column" />
+        )
+    VALUES (
+				#id#,
+				#pv#,
+				#uv#,
+				#ip#,
+				#onlyVisitor#,
+				#liveTime#,
+				#isDate#,
+				#startTime#,
+				#endTiem#,
+				#addTime#,
+				#onlyClick#
+    )
+    <!--<selectKey resultClass="long" keyProperty="id">
+			select last_insert_id() as ID from general limit 1
+    </selectKey>-->
+</insert>  
+
+<update id="updateGeneral" parameterClass="general">
+    UPDATE general 
+    <dynamic prepend="set">
+			<isNotEmpty prepend="," property = "id">
+				id = #id#
+			</isNotEmpty>
+			<isNotEmpty prepend="," property = "pv">
+				pv = #pv#
+			</isNotEmpty>
+			<isNotEmpty prepend="," property = "uv">
+				uv = #uv#
+			</isNotEmpty>
+			<isNotEmpty prepend="," property = "ip">
+				ip = #ip#
+			</isNotEmpty>
+			<isNotEmpty prepend="," property = "onlyVisitor">
+				only_visitor = #onlyVisitor#
+			</isNotEmpty>
+			<isNotEmpty prepend="," property = "liveTime">
+				live_time = #liveTime#
+			</isNotEmpty>
+			<isNotEmpty prepend="," property = "isDate">
+				is_date = #isDate#
+			</isNotEmpty>
+			<isNotEmpty prepend="," property = "startTime">
+				start_time = #startTime#
+			</isNotEmpty>
+			<isNotEmpty prepend="," property = "endTiem">
+				end_tiem = #endTiem#
+			</isNotEmpty>
+			<isNotEmpty prepend="," property = "addTime">
+				add_time = #addTime#
+			</isNotEmpty>
+			<isNotEmpty prepend="," property = "onlyClick">
+				only_click = #onlyClick#
+			</isNotEmpty>
+	</dynamic>
+    <include refid="General_Query_List_Sharing" />
+</update> 
+
+<select id="findGeneral" resultMap="general_result" parameterClass="java.util.HashMap">
+    SELECT
+     	<include refid="General_column" />      
+    FROM general
+   <include refid="General_Query_List_Sharing" />
+</select>
+
+<select id="findByIdGeneral" resultMap="general_result" parameterClass="java.lang.Long">
+    SELECT
+     	<include refid="General_column" />      
+    FROM general
+    <include refid="General_By_Id" />
+</select>
+
+<select id="listGeneral" resultMap="general_result" parameterClass="java.util.HashMap">
+    SELECT
+         <include refid="General_column" />  
+    FROM general
+	<include refid="General_Query_List_Sharing" />
+	<include refid="General_List_Paramter" />
+	limit #begin#,#pageSize#
+</select>
+
+
+<select id="listGeneralCount" resultClass="java.lang.Integer" parameterClass="java.util.HashMap">
+    SELECT
+		COUNT(*)
+   	FROM general
+	<include refid="General_Query_List_Sharing" />
+</select>
+
+<delete id="delGeneral" parameterClass="general">
+    DELETE  FROM  general 
+    <include refid="General_By_Id" />
+</delete>  
+
+</sqlMap>

@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<!-- Always ensure to use the correct XML header as above! -->
+<sqlMap namespace="OriginCategory">
+<typeAlias alias="originCategory" type="com.hqb360.analysis.report.domain.entity.OriginCategory"/>
+<resultMap id="originCategory_result" class="originCategory">
+    <result property="id" column="id"/>
+    <result property="isDate" column="is_date"/>
+    <result property="clickSearch" column="click_search"/>
+    <result property="clickOther" column="click_other"/>
+    <result property="directInput" column="direct_input"/>
+    <result property="createTime" column="create_time"/>
+    <result property="addTiem" column="add_tiem"/>
+</resultMap>
+
+<sql id="OriginCategory_Query_List_Sharing">
+	<dynamic prepend="WHERE">
+			<isNotEmpty prepend="and" property = "id">
+				id = #id#
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property = "isDate">
+				is_date = #isDate#
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property = "clickSearch">
+				click_search = #clickSearch#
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property = "clickOther">
+				click_other = #clickOther#
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property = "directInput">
+				direct_input = #directInput#
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property = "createTime">
+				create_time = #createTime#
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property = "addTiem">
+				add_tiem = #addTiem#
+			</isNotEmpty>
+	</dynamic>
+</sql>
+
+<sql id="OriginCategory_List_Paramter">
+	<dynamic prepend="ORDER BY">
+		<isNotEmpty property = "orderItem">
+			 $orderItem$ $orderType$ <!-- # and $ has difference, this place need $ -->
+		</isNotEmpty>
+	</dynamic>
+</sql>
+
+<sql id="OriginCategory_column">
+			id,
+			is_date,
+			click_search,
+			click_other,
+			direct_input,
+			create_time,
+			add_tiem
+</sql>
+
+<sql id="OriginCategory_By_Id">
+	WHERE  id = #id#
+</sql> 
+
+<insert id="addOriginCategory" parameterClass="originCategory" >
+    INSERT INTO origin_category (
+	<include refid="OriginCategory_column" />
+        )
+    VALUES (
+				#id#,
+				#isDate#,
+				#clickSearch#,
+				#clickOther#,
+				#directInput#,
+				#createTime#,
+				#addTiem#
+    )
+    <!--<selectKey resultClass="long" keyProperty="id">
+			select last_insert_id() as ID from origin_category limit 1
+    </selectKey>-->
+</insert>  
+
+<update id="updateOriginCategory" parameterClass="originCategory">
+    UPDATE origin_category 
+    <dynamic prepend="set">
+			<isNotEmpty prepend="," property = "id">
+				id = #id#
+			</isNotEmpty>
+			<isNotEmpty prepend="," property = "isDate">
+				is_date = #isDate#
+			</isNotEmpty>
+			<isNotEmpty prepend="," property = "clickSearch">
+				click_search = #clickSearch#
+			</isNotEmpty>
+			<isNotEmpty prepend="," property = "clickOther">
+				click_other = #clickOther#
+			</isNotEmpty>
+			<isNotEmpty prepend="," property = "directInput">
+				direct_input = #directInput#
+			</isNotEmpty>
+			<isNotEmpty prepend="," property = "createTime">
+				create_time = #createTime#
+			</isNotEmpty>
+			<isNotEmpty prepend="," property = "addTiem">
+				add_tiem = #addTiem#
+			</isNotEmpty>
+	</dynamic>
+    <include refid="OriginCategory_Query_List_Sharing" />
+</update> 
+
+<select id="findOriginCategory" resultMap="originCategory_result" parameterClass="java.util.HashMap">
+    SELECT
+     	<include refid="OriginCategory_column" />      
+    FROM origin_category
+   <include refid="OriginCategory_Query_List_Sharing" />
+</select>
+
+<select id="findByIdOriginCategory" resultMap="originCategory_result" parameterClass="java.lang.Long">
+    SELECT
+     	<include refid="OriginCategory_column" />      
+    FROM origin_category
+    <include refid="OriginCategory_By_Id" />
+</select>
+
+<select id="listOriginCategory" resultMap="originCategory_result" parameterClass="java.util.HashMap">
+    SELECT
+         <include refid="OriginCategory_column" />  
+    FROM origin_category
+	<include refid="OriginCategory_Query_List_Sharing" />
+	<include refid="OriginCategory_List_Paramter" />
+	limit #begin#,#pageSize#
+</select>
+
+
+<select id="listOriginCategoryCount" resultClass="java.lang.Integer" parameterClass="java.util.HashMap">
+    SELECT
+		COUNT(*)
+   	FROM origin_category
+	<include refid="OriginCategory_Query_List_Sharing" />
+</select>
+
+<delete id="delOriginCategory" parameterClass="originCategory">
+    DELETE  FROM  origin_category 
+    <include refid="OriginCategory_By_Id" />
+</delete>  
+
+</sqlMap>
