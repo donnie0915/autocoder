@@ -13,8 +13,8 @@ sql:
 - type: mysql
   driver: com.mysql.jdbc.Driver
   url: jdbc:mysql://192.168.10.254/analysis_report?useUnicode=true&amp;characterEncoding=utf-8
-  username: 360hqb
-  password: 360hqb
+  username: soso 
+  password: soso
   database: analysis_report
   #multi-table use "," split , eg: user,feed
   tables: origin_domain,origin_page,origin_category,general
