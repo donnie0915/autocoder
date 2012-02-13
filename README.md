@@ -32,15 +32,15 @@ WINDOWS下面拷贝选择请选择 F：目录
 2. 在应用的pom.xml文件中添加依赖
    <pre><code> &lt;dependency&gt;
         &lt;groupId&gt;org.yaml&lt;/groupId&gt;
-        <lt;artifactId>gt;snakeyaml<lt;/artifactId>gt;
-        <lt;version>gt;1.9<lt;/version>gt;
-      <lt;/dependency>gt;
-      <lt;dependency>gt;
-        <lt;groupId>gt;org.testng<lt;/groupId>gt;
-        <lt;artifactId>gt;testng<lt;/artifactId>gt;
-        <lt;version>gt;6.1.1<lt;/version>gt;
-        <lt;scope>gt;test<lt;/scope>gt;
-      <lt;/dependency>gt;
+        &lt;artifactId&gt;snakeyaml&lt;/artifactId&gt;
+        &lt;version&gt;1.9&lt;/version&gt;
+      &lt;/dependency&gt;
+      &lt;dependency&gt;
+        &lt;groupId&gt;org.testng&lt;/groupId&gt;
+        &lt;artifactId&gt;testng&lt;/artifactId&gt;
+        &lt;version&gt;6.1.1&lt;/version&gt;
+        &lt;scope&gt;test&lt;/scope&gt;
+      &lt;/dependency&gt;
    </code></pre>
 
 *********************************代码相关说明*********************************
