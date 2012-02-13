@@ -22,15 +22,14 @@ WINDOWS下面拷贝选择请选择 F：目录
 *********************************maven依赖置*********************************
 
 1. 在maven的配置文件中增加apache的mirror：
-   <code> 
-      lt; mirror gt;
-        lt; id gt;apache lt; /id gt;
-        lt;mirrorOfgt;centrallt;/mirrorOfgt;
-        lt;urlgt;http://repo1.maven.org/maven2lt;/urlgt;
-      lt;/mirrorgt; 
-   </code>
+   <pre><code> <mirror>
+        <id>apache</id>
+        <mirrorOf>central</mirrorOf>
+        <url>http://repo1.maven.org/maven2</url>
+    </mirror> </code></pre>
+
 2. 在应用的pom.xml文件中添加依赖
-   <code> 
+   <pre><code> 
       <dependency>
         <groupId>org.yaml</groupId>
         <artifactId>snakeyaml</artifactId>
@@ -42,7 +41,7 @@ WINDOWS下面拷贝选择请选择 F：目录
         <version>6.1.1</version>
         <scope>test</scope>
       </dependency>
-   </code>
+   </code></pre>
 
 *********************************代码相关说明*********************************
 
