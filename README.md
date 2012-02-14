@@ -53,7 +53,7 @@ WINDOWS下面拷贝选择请选择 F：目录
     set动态字段： <br />
         adapter.setFiled("startTime", startTime).setFiled("endTime", endTime); <br />
     在xml配置中调用 <br />
-        <pre><code>&lt;isNotEmpty prepend="and" property = "dynamicFileds_startTime"&gt; 
+        <pre><code>     &lt;isNotEmpty prepend="and" property = "dynamicFileds_startTime"&gt; 
             created_time &gt; #dynamicFileds_startTime# 
         &lt;/isNotEmpty&gt; 
         &lt;isNotEmpty prepend="and" property = "dynamicFileds_endTime"&gt; 
